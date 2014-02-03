@@ -1,0 +1,31 @@
+<% if @slide.errors.any? %>
+	<div id='errors'>
+		<p>Erros</p>
+		<ul>
+			<% @slide.errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+			<% end %>
+		</ul>
+	</div>
+<% end %>
+<%= form_for [:admin, @slider, @slide], html: { multipart: true } do |f| %>
+	<%= f.label :title, "Título" %>
+	<%= f.text_field :title, class: "form-control" %>
+
+	<%= f.label :description, "Descrição" %>
+	<%= f.text_field :description, class: "form-control" %>
+
+	<%= f.label :link %>
+	<%= f.text_field :link, class: "form-control" %>
+
+	<%= f.label :display_order, "Posição" %>
+	<%= f.number_field :display_order, class: "form-control" %>
+
+	<%= f.label :image, "Imagem" %>
+	<%= f.file_field :image, class: "form-control" %>
+
+	<%= f.label :enabled, "Ativo" %>
+	<%= f.check_box :enabled %>
+
+	<%= f.submit class: "btn btn-primary" %>
+<% end %>

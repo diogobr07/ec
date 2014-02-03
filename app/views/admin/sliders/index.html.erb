@@ -1,0 +1,14 @@
+<h2>Sliders</h2>
+<%= link_to 'Novo Slider', new_admin_slider_path %>
+<% unless @sliders.empty? %>
+	<table class="table">
+		<tr>
+			<th>Id</th>
+			<th>Identificador</th>
+			<th></th>
+      <th></th>
+			<th></th>
+		</tr>
+		<%= render @sliders %>
+	</table>
+<% end %>

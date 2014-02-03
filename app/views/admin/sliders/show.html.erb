@@ -1,0 +1,34 @@
+<h2>Slider <%= @slider.identifier %></h2>
+<%= link_to 'Adicionar Item', new_admin_slider_slide_path(@slider) %>
+<% unless @slider.slides.empty? %>
+	<table class="table">
+		<tr>
+			<th>Titulo</th>
+			<th>Descrição</th>
+			<th>Link</th>
+			<th>Ordem</th>
+			<th>Ativo</th>
+			<th>Imagem</th>
+			<th></th>
+			<th></th>
+		</tr>
+		<% @slider.slides.by_display_order.each do |slide| %>
+			<tr>
+				<td><%= slide.title %></td>
+				<td><%= slide.description %></td>
+				<td><%= slide.link %></td>
+				<td><%= slide.display_order %></td>
+				<td><%= slide.enabled ? 'Sim' : 'Não' %></td>
+				<td><%= image_tag slide.image.url(:medium), class: "img-thumbnail" %></td>
+				<td><%= link_to 'Editar', edit_admin_slider_slide_path(@slider, slide) %></td>
+				<td>
+					<%= link_to 'Excluir', 
+						admin_slider_slide_path(@slider, slide),
+						method: :delete,
+						data: { confirm: 'Tem certeza?' }
+					 %>
+				</td>
+			</tr>
+		<% end %>
+	</table>
+<% end %>

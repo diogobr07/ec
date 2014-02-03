@@ -1,0 +1,7 @@
+<tr>
+	<td><%= slider.id %></td>
+	<td><%= slider.identifier %></td>
+  <td><%= link_to 'Editar', edit_admin_slider_path(slider) %></td>
+	<td><%= link_to 'Visualizar Itens', admin_slider_path(slider) %></td>
+	<td><%= link_to 'Excluir', admin_slider_path(slider), method: :delete, data: { confirm: 'Tem certeza?' } %></td>
+</tr>

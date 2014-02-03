@@ -1,0 +1,10 @@
+<h2>Usuários</h2>
+<%= link_to 'Adcionar Usuário', new_admin_user_path %>
+<table class="table">
+	<tr>
+		<th>Nome</th>
+		<th>Email</th>
+		<th></th>
+	</tr>
+	<%= render @users %>
+</table>

@@ -1,0 +1,25 @@
+<% if @post.errors.any? %>
+  <div id='errors'>
+    <p>Erros</p>
+    <ul>
+      <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<%= form_for [:admin, @post],  html: { multipart: true } do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title, class: "form-control" %> 
+  
+  <%= f.label :body %>
+  <%= f.text_area :body, class: "form-control" %>
+  
+  <%= f.label :image %>
+  <%= f.file_field :image, class: "form-control" %>
+  
+  <%= f.label :published %>
+  <%= f.check_box :published %>
+
+  <%= f.submit class: "btn btn-primary" %>
+<% end %>

@@ -1,0 +1,6 @@
+<h2><%= @user.name %></h2>
+<ul>
+	<li>Email: <%= @user.email %></li>
+</ul>
+
+<%= link_to 'Editar usuário', edit_admin_user_path(@user) %>

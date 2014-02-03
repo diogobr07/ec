@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">	
+	<title>Entra Contra</title>
+	<meta name="description" content="">
+  	<meta name="viewport" content="width=device-width">
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<!--[if lt IE 7]>
+	<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+<![endif]-->
+<header class="top">
+  <div>
+    <h1 id="logo"><a href="#" title="Entra Contra">Entra Contra</a></h1>
+    <nav class="main">
+      <ul class="dropdown">
+        <li class="headlink"><a href="#">home</a></li>
+        <li class="headlink">
+          <a href="#">jogos</a>
+          <nav>
+            <ul>
+              <li><a href="#">street fighter iv</a></li>
+              <li><a href="#">the king of fighters xiii</a></li>
+              <li><a href="#">ultimate marvel vs capcom 3</a></li>
+              <li><a href="#">injustice</a></li>
+              <li><a href="#">mortal kombat 9</a></li>
+            </ul>
+          </nav>
+        </li>
+        <li class="headlink"><a href="#">eventos</a></li>
+        <li class="headlink"><a href="#">ec torneios</a></li>
+        <li class="headlink"><a href="#">canais</a></li>
+        <li class="headlink"><a href="#">tutoriais</a></li>
+        <li class="headlink"><a href="#">store</a></li>
+      </ul>
+    </nav>
+   </div>
+</header>
+
+<%= yield %>
+
+<footer id="main-footer">
+  <div>
+    <ul>
+      <li><h3><a href="#">Special offers</a></h3></li>
+      <li><a href="#"><img src="<%= asset_path 'layout/special-offer.jpg' %>" /></a></li>
+    </ul>
+    <ul>
+      <li><h3><a href="#">Twitter</a></h3></li>
+      <li class="twitter-post"><a href="#">Check out this great #themeforest item ‘Shopland - responsive magento template<em>2 months ago</em></a>
+      <li class="twitter-post"><a href="#">Check out this great #themeforest item ‘Shopland - responsive magento template<em>2 months ago</em></a>
+      </li>
+    </ul>
+    <ul class="bullet-list">
+      <li><h3><a href="#">Categories</a></h3></li>
+      <li><a href="#">Sed quis orci lorem id sodales lectus</a></li>
+      <li><a href="#">Donec scelerisque</a></li>
+      <li><a href="#">Quam quis tincidunt sodales</a></li>
+      <li><a href="#">Sisi felis sollicitudin leo</a></li>
+      <li><a href="#">Non tempor ante est ac libero</a></li>
+    </ul>
+    <ul class="bullet-list last">
+      <li><h3><a href="#">Acc</a></h3></li>
+      <li><a href="#">Sed quis orci lorem id sodales lectus</a></li>
+      <li><a href="#">Donec scelerisque</a></li>
+      <li><a href="#">Quam quis tincidunt sodales</a></li>
+      <li><a href="#">Sisi felis sollicitudin leo</a></li>
+      <li><a href="#">Non tempor ante est ac libero</a></li>          
+    </ul>
+    <div class="clear"></div>
+  </div>
+  <nav class="footer-links">
+    <div>
+      <a href="#">Sitemap</a>
+      <a href="#">Serach Terms</a>
+      <a href="#">Advanced Search</a>
+    </div>
+  </nav>
+</footer>
+<script>
+    var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src='//www.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+</body>
+</html>

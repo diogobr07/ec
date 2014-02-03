@@ -1,0 +1,31 @@
+<% if @slider.present? && @slider.slides.any? %>
+  <div id="slider" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <% @slider.slides.enabled.each_with_index do |slide, index| %>
+        <li data-target="#slider" data-slide-to="<%= index %>" class="<%= 'active' if index == 0 %>"></li>
+      <% end %>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+      <% @slider.slides.enabled.by_display_order.each_with_index do |slide, index| %>
+        <div class="item <%= 'active' if index == 0 %>">
+          <a href="<%= slide.link %>"><img src="<%= slide.image.url %>" alt="" /></a>
+            <div class="carousel-caption">
+              <h3><%= slide.title %></h3>
+              <p><%= slide. description %></p>
+            </div>
+        </div>
+      <% end %>    
+    </div>
+
+    <!-- Controls -->
+    <a class="left carousel-control" href="#slider" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+    </a>
+    <a class="right carousel-control" href="#slider" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+    </a>
+  </div>
+<% end %>

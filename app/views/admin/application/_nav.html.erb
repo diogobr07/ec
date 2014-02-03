@@ -1,0 +1,24 @@
+<div class="navbar navbar-inverse" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to 'Entra Contra', admin_dashboard_path, class: 'navbar-brand' %>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><%= link_to 'Usuários', admin_users_path %></li>
+        <li><%= link_to 'Sliders', admin_sliders_path %></li>
+        <li><%= link_to 'Posts', admin_posts_path %></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+          <li class="active"><%= link_to current_user.name, admin_user_path(current_user) %></li>
+          <li><%= link_to 'Logout', admin_sessions_path, method: :delete %></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
