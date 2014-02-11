@@ -1,5 +1,7 @@
 Ec::Application.routes.draw do
 
+  mount Ckeditor::Engine => '/ckeditor'
+  
   root 'site#home'
 
   #admin routes
