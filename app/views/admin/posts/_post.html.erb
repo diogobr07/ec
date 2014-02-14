@@ -3,7 +3,7 @@
   <td><%= post.title %></td>
   <td><%= post.published ? 'Sim' : 'Não' %></td>
   <td><%= post.user.name %></td>
-  <td><%= post.created_at %></td>
+  <td><%= l(post.created_at, format: :short) %></td>
   <td><%= image_tag post.image.url(:thumb), class: "img-thumbnail" %></td>
   <td><%= link_to 'Editar', edit_admin_post_path(post) %></td>
   <td><%= link_to 'Excluir', admin_post_path(post), method: :delete, data: { confirm: 'Tem certeza?' } %></td>
