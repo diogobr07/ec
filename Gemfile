@@ -47,7 +47,7 @@ gem 'bcrypt-ruby', '~> 3.1.2'
 gem 'ckeditor'
 
 # Use unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
