@@ -49,8 +49,14 @@ gem 'ckeditor'
 # Use unicorn as the app server
 gem 'unicorn'
 
+gem 'httparty', '0.13.1'
+
 # Use Capistrano for deployment
-# gem 'capistrano', group: :development
+group :development do
+	gem 'capistrano',  '~> 3.1'
+	gem 'capistrano-rails', '~> 1.1'
+	gem 'capistrano-rvm'
+end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]

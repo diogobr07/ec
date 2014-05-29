@@ -3,6 +3,7 @@ Ec::Application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
   
   root 'site#home'
+  get 'teste' => 'site#teste'
 
   #admin routes
   namespace :admin do

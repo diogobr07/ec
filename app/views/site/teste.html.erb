@@ -1,0 +1,6 @@
+<pre>
+<% @recent_posts['posts'].each do |post| %>
+	<h1><%= post['title'] %></h1>
+	<article><%= post['content'].html_safe %></article>
+	<%= post %>
+<% end %>
