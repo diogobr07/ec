@@ -1,7 +1,9 @@
 class Post < ActiveRecord::Base
   include HTTParty
 
-  base_uri '192.168.0.72/wordpress/api/core'
+  base_uri 'wordpress.dev/api/core'
+
+  attr_accessor :title, :content, :author_nickname, :categories, :date, :thumbnail
 
   has_attached_file :image, 
     :styles => { :medium => "200x200>", :thumb => "100x100>" },
@@ -13,7 +15,22 @@ class Post < ActiveRecord::Base
   belongs_to :user
 
   def self.get_recent_posts
-  	response = self.get('/get_recent_posts', { query: {count: 2} });
-    JSON.parse(response.body)
+    posts = []
+    response = self.get('/get_recent_posts', { query: {count: 2} })
+    JSON.parse(response.body)['posts'].each do |p|
+      post = Post.new
+      post.title = p['title']
+      post.content = p['content']
+      post.author_nickname = p['author']['nickname']
+      post.date = Date.parse(p['date'])
+      post.thumbnail = p['thumbnail_images']['full']['url']
+      post.categories = []
+      p['categories'].each do |categorie|
+        post.categories.push(categorie)
+      end
+      posts.push(post)
+    end
+    posts  
   end
+
 end

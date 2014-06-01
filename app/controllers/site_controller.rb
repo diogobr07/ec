@@ -5,6 +5,5 @@ class SiteController < ApplicationController
 
   def teste
   	@recent_posts = Post.get_recent_posts
-  	render :layout => false
   end
 end

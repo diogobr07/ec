@@ -1,6 +1,9 @@
-<pre>
-<% @recent_posts['posts'].each do |post| %>
-	<h1><%= post['title'] %></h1>
-	<article><%= post['content'].html_safe %></article>
-	<%= post %>
+<% @recent_posts.each do |post| %>
+	<h1><%= post.title %></h1>
+  <% post.categories.each do  |c| %>
+    <a href="#"><%= c['title'] %></a>
+  <% end %>
+  <a href="#"><%= post.author_nickname %></a> em  <%= l(post.date, format: :long) %>
+  <img src="<%= post.thumbnail %>" width="200" height="200">
+  <article><%= post.content.html_safe %></article>
 <% end %>
