@@ -23,7 +23,7 @@ class Post < ActiveRecord::Base
       post.content = p['content']
       post.author_nickname = p['author']['nickname']
       post.date = Date.parse(p['date'])
-      post.thumbnail = p['thumbnail_images']['full']['url']
+      post.thumbnail = p['thumbnail_images']['full']['url'] if p['thumbnail_images']
       post.categories = []
       p['categories'].each do |categorie|
         post.categories.push(categorie)

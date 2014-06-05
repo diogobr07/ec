@@ -4,6 +4,8 @@
     <a href="#"><%= c['title'] %></a>
   <% end %>
   <a href="#"><%= post.author_nickname %></a> em  <%= l(post.date, format: :long) %>
-  <img src="<%= post.thumbnail %>" width="200" height="200">
+  <% if(post.thumbnail) %>
+  	<img src="<%= post.thumbnail %>" width="200" height="200">
+  <% end %>	
   <article><%= post.content.html_safe %></article>
 <% end %>
