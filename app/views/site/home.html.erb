@@ -9,41 +9,28 @@
     </ul>
   </nav>
   <section class="posts">
+    <% @recent_posts.each do |post| %>
     <article class="clearfix">
       <div class="pull-left">
-        <figure><img src="<%= asset_path 'layout/posts/image1.jpg' %>" title="" alt=""/></figure>
+        <% if(post.thumbnail) %>
+        <figure><img src="<%= post.thumbnail %>" title="" alt=""/></figure>
+        <% end %>
       </div>
       <div class="pull-right">
         <nav>
-          <a href="#">Tutorials</a>
-          <a href="#">Street Fighter</a>
+          <% post.categories.each do |category| %>
+          <a href="#<%= category['slug'] %>"><%= category['title'] %></a>
+          <% end %>
         </nav>
         <header>
-          <h2>Double Option Select, punição focus backdash</h2>
-          <h3 class="author"><span><a href="#">Row Ow</a> em <a href="#">27 de julho de 2013</a></span></h3>
+          <h2><%= post.title %></h2>
+          <h3 class="author"><span><a href="#"><%= post.author_nickname %></a> em <a href="#"><%= l(post.date, format: :long) %></a></span></h3>
         </header>
-        <p>Texto sobre o poste resumido, arial regular 12pt, três linhas de texto explicação breve e o photoshop está me tirandot a dando ódio mas eu nao quero reiniciar. Virou windows essa porra!</p>
+        <%= post.content_preview.html_safe %>
         <a href="#" class="keep-reading">Continuar lendo</a>
       </div>
     </article>
-   
-    <article class="clearfix">
-      <div class="pull-left">
-        <figure><img src="<%= asset_path 'layout/posts/image1.jpg' %>" title="" alt=""/></figure>
-      </div>
-      <div class="pull-right">
-        <nav>
-          <a href="#">Tutorials</a>
-          <a href="#">Street Fighter</a>
-        </nav>
-        <header>
-          <h2>Double Option Select, punição focus backdash</h2>
-          <h3 class="author"><span><a href="#">Row Ow</a> em <a href="#">27 de julho de 2013</a></span></h3>
-        </header>
-        <p>Texto sobre o poste resumido, arial regular 12pt, três linhas de texto explicação breve e o photoshop está me tirandot a dando ódio mas eu nao quero reiniciar. Virou windows essa porra!</p>
-        <a href="#" class="keep-reading">Continuar lendo</a>
-      </div>
-    </article>         
+    <% end %>        
     
     <ul class="paginator clearfix">
       <!--<li><a class="first" href="#">primeira</a></li>-->

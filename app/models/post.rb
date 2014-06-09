@@ -25,12 +25,17 @@ class Post < ActiveRecord::Base
       post.date = Date.parse(p['date'])
       post.thumbnail = p['thumbnail_images']['full']['url'] if p['thumbnail_images']
       post.categories = []
-      p['categories'].each do |categorie|
-        post.categories.push(categorie)
+      p['categories'].each do |category|
+        post.categories.push(category)
       end
       posts.push(post)
     end
     posts  
+  end
+
+  def content_preview
+    content_preview = @content[0..200]
+    content_preview+= "</p>" unless content_preview.end_with?("</p>")
   end
 
 end
