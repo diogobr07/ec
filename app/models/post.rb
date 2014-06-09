@@ -34,8 +34,8 @@ class Post < ActiveRecord::Base
   end
 
   def content_preview
-    content_preview = @content[0..200]
-    content_preview+= "</p>" unless content_preview.end_with?("</p>")
+    content_preview = @content[0..210]
+    content_preview+= "</p>"
   end
 
 end
