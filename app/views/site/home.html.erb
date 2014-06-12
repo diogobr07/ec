@@ -27,7 +27,7 @@
           <h3 class="author"><span><a href="#"><%= post.author_nickname %></a> em <a href="#"><%= l(post.date, format: :long) %></a></span></h3>
         </header>
         <%= post.content_preview.html_safe %>
-        <a href="#" class="keep-reading">Continuar lendo</a>
+        <a href="/post/<%= post.slug %>" class="keep-reading">Continuar lendo</a>
       </div>
     </article>
     <% end %>        
