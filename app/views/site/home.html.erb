@@ -19,12 +19,18 @@
       <div class="pull-right">
         <nav>
           <% post.categories.each do |category| %>
-          <a href="#<%= category['slug'] %>"><%= category['title'] %></a>
+          <a href="/category/<%= category['slug'] %>"><%= category['title'] %></a>
           <% end %>
         </nav>
         <header>
           <h2><%= post.title %></h2>
-          <h3 class="author"><span><a href="#"><%= post.author_nickname %></a> em <a href="#"><%= l(post.date, format: :long) %></a></span></h3>
+          <h3 class="author">
+            <span>
+              <a href="/author/<%= post.author_slug %>">
+                <%= post.author_nickname %></a> em <a href="#"><%= l(post.date, format: :long) %>
+              </a>
+            </span>
+          </h3>
         </header>
         <%= post.content_preview.html_safe %>
         <a href="/post/<%= post.slug %>" class="keep-reading">Continuar lendo</a>

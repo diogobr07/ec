@@ -4,7 +4,8 @@ Ec::Application.routes.draw do
   
   root 'site#home'
   get 'teste' => 'site#teste'
-  get  'post/:slug' => 'site#post_by_slug'
+  get 'post/:slug' => 'site#post_by_slug'
+  get 'author/:slug' => 'site#post_by_author'
 
   #admin routes
   namespace :admin do

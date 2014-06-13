@@ -9,6 +9,11 @@ class SiteController < ApplicationController
     render :post
   end
 
+  def post_by_author
+    @posts = Post.find_by_author(params[:slug])
+    render :posts
+  end
+
   def teste
   	@recent_posts = Post.get_recent_posts
   	render layout: false
