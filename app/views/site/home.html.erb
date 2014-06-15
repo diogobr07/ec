@@ -9,7 +9,7 @@
     </ul>
   </nav>
   <section class="posts">
-    <% @recent_posts.each do |post| %>
+    <% @content[:posts].each do |post| %>
     <article class="clearfix">
       <div class="pull-left">
         <% if(post.thumbnail) %>

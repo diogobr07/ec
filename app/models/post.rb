@@ -49,8 +49,13 @@ class Post < ActiveRecord::Base
   def self.find(search)
 
     posts = {posts: []}
+    query = {}
     
-    response = self.get("/get_#{search[:by]}_posts", { query: {slug: search[:slug]} })
+    query[:slug]  = search[:slug] if search[:slug]
+    query[:count] = search[:count] if search[:count]
+    query[:page]  = search[:page] if search[:page]
+
+    response = self.get("/get_#{search[:by]}_posts", { query: query })
     response = JSON.parse(response.body)
     
     if(response['status'] == 'ok')

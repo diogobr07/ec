@@ -1,7 +1,7 @@
-<% if @posts[:posts].any? %>
+<% if @content[:posts].any? %>
 <h2>Posts</h2>
 <section class="posts">
-  <% @posts[:posts].each do |post| %>
+  <% @content[:posts].each do |post| %>
   <article class="clearfix">
     <div class="pull-left">
       <% if(post.thumbnail) %>

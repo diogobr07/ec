@@ -1,7 +1,7 @@
 class SiteController < ApplicationController
   def home
     @slider = Slider.find_by(identifier: 'home')
-    @recent_posts = Post.get_recent_posts
+    @content = Post.find({by: :recent, count: 2})
   end
 
   def post_by_slug
@@ -10,17 +10,17 @@ class SiteController < ApplicationController
   end
 
   def posts_by_author
-    @posts = Post.find({by: :author, slug: params[:slug]})
+    @content = Post.find({by: :author, slug: params[:slug]})
     render :posts
   end
 
   def posts_by_category
-    @posts = Post.find({by: :category, slug: params[:slug]})
+    @content = Post.find({by: :category, slug: params[:slug]})
     render :posts
   end
 
   def posts_by_tag
-    @posts = Post.find({by: :tag, slug: params[:slug]})
+    @content = Post.find({by: :tag, slug: params[:slug]})
     render :posts
   end
 
