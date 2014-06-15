@@ -3,9 +3,11 @@ Ec::Application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
   
   root 'site#home'
-  get 'teste' => 'site#teste'
   get 'post/:slug' => 'site#post_by_slug'
-  get 'author/:slug' => 'site#post_by_author'
+  get 'author/:slug' => 'site#posts_by_author'
+  get 'category/:slug' => 'site#posts_by_category'
+  get 'tag/:slug' => 'site#posts_by_tag'
+  get 'teste' => 'site#teste'
 
   #admin routes
   namespace :admin do

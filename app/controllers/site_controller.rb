@@ -9,8 +9,18 @@ class SiteController < ApplicationController
     render :post
   end
 
-  def post_by_author
+  def posts_by_author
     @posts = Post.find_by_author(params[:slug])
+    render :posts
+  end
+
+  def posts_by_category
+    @posts = Post.find_by_category(params[:slug])
+    render :posts
+  end
+
+  def posts_by_tag
+    @posts = Post.find_by_tag(params[:slug])
     render :posts
   end
 

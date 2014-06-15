@@ -54,6 +54,24 @@ class Post < ActiveRecord::Base
     posts 
   end
 
+  def self.find_by_category(slug)
+    posts = []
+    response = self.get('/get_category_posts', { query: {slug: slug} })
+    JSON.parse(response.body)['posts'].each do |p|
+      posts.push(self.new_post(p))
+    end
+    posts    
+  end
+
+  def self.find_by_tag(slug)
+    posts = []
+    response = self.get('/get_tag_posts', { query: {slug: slug} })
+    JSON.parse(response.body)['posts'].each do |p|
+      posts.push(self.new_post(p))
+    end
+    posts    
+  end
+
   def content_preview
     content_preview = @content[0..210]
     content_preview+= "</p>"
