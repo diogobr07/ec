@@ -1,6 +1,7 @@
+<% if @posts[:posts].any? %>
 <h2>Posts</h2>
 <section class="posts">
-  <% @posts.each do |post| %>
+  <% @posts[:posts].each do |post| %>
   <article class="clearfix">
     <div class="pull-left">
       <% if(post.thumbnail) %>
@@ -29,3 +30,6 @@
   </article>
   <% end %>
 </section>
+<% else %>
+  <%= render "post_not_found" %>
+<% end %>

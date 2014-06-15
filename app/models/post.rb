@@ -31,6 +31,11 @@ class Post < ActiveRecord::Base
     post
   end
 
+  def self.find_by_slug(slug)
+    response = self.get('/get_post', { query: {slug: slug} })
+    post = self.new_post(JSON.parse(response.body)['post'])
+  end
+ 
   def self.get_recent_posts
     posts = []
     response = self.get('/get_recent_posts', { query: {count: 2} })
@@ -40,36 +45,23 @@ class Post < ActiveRecord::Base
     posts  
   end
 
-  def self.find_by_slug(slug)
-    response = self.get('/get_post', { query: {slug: slug} })
-    post = self.new_post(JSON.parse(response.body)['post'])
-  end
 
-  def self.find_by_author(slug)
-    posts = []
-    response = self.get('/get_author_posts', { query: {slug: slug} })
-    JSON.parse(response.body)['posts'].each do |p|
-      posts.push(self.new_post(p))
-    end
-    posts 
-  end
+  def self.find(search)
 
-  def self.find_by_category(slug)
-    posts = []
-    response = self.get('/get_category_posts', { query: {slug: slug} })
-    JSON.parse(response.body)['posts'].each do |p|
-      posts.push(self.new_post(p))
+    posts = {posts: []}
+    
+    response = self.get("/get_#{search[:by]}_posts", { query: {slug: search[:slug]} })
+    response = JSON.parse(response.body)
+    
+    if(response['status'] == 'ok')
+      posts[:pages] = response[:pages]
+      response['posts'].each do |p|
+        posts[:posts].push(self.new_post(p))
+      end
     end
-    posts    
-  end
+    
+    posts
 
-  def self.find_by_tag(slug)
-    posts = []
-    response = self.get('/get_tag_posts', { query: {slug: slug} })
-    JSON.parse(response.body)['posts'].each do |p|
-      posts.push(self.new_post(p))
-    end
-    posts    
   end
 
   def content_preview
