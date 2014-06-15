@@ -36,16 +36,6 @@ class Post < ActiveRecord::Base
     post = self.new_post(JSON.parse(response.body)['post'])
   end
  
-  def self.get_recent_posts
-    posts = []
-    response = self.get('/get_recent_posts', { query: {count: 2} })
-    JSON.parse(response.body)['posts'].each do |p|
-      posts.push(self.new_post(p))
-    end
-    posts  
-  end
-
-
   def self.find(search)
 
     posts = {posts: []}
