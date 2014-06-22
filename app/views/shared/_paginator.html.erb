@@ -1,0 +1,20 @@
+<% if(@content[:pages] > 1) %>
+<ul class="paginator clearfix">
+  <% if(@content[:page] != 1) %>
+  <li><a class="first" href="#">primeira</a></li>
+  <% end %>
+  <% if(@content[:page] - 1 > 0) %>
+  <li><a class="previous" href="#"><</a></li>
+  <% end %>
+  <% @content[:pages].times do |page| %>
+  <% page += 1 %>
+  <li><a href="<%= page %>"><%= page %></a></li>
+  <% end %>
+  <% if(@content[:page] + 1 <= @content[:pages]) %>
+  <li><a class="next" href="<%= @content[:page] + 1 %>">></a></li>
+  <% end %>
+  <% if(@content[:page] != @content[:pages]) %>
+  <li><a class="last" href="<%= @content[:pages] %>">última</a></li>
+  <% end %>
+</ul>
+<% end %>

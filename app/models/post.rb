@@ -43,13 +43,14 @@ class Post < ActiveRecord::Base
     
     query[:slug]  = search[:slug] if search[:slug]
     query[:count] = search[:count] if search[:count]
-    query[:page]  = search[:page] if search[:page]
+    query[:page]  = search[:page] ? search[:page] : 1;
 
     response = self.get("/get_#{search[:by]}_posts", { query: query })
     response = JSON.parse(response.body)
     
     if(response['status'] == 'ok')
-      posts[:pages] = response[:pages]
+      posts[:page] = query[:page]
+      posts[:pages] = response['pages']
       response['posts'].each do |p|
         posts[:posts].push(self.new_post(p))
       end

@@ -1,35 +1,40 @@
-<% if @content[:posts].any? %>
-<h2>Posts</h2>
-<section class="posts">
-  <% @content[:posts].each do |post| %>
-  <article class="clearfix">
-    <div class="pull-left">
-      <% if(post.thumbnail) %>
-      <figure><img src="<%= post.thumbnail %>" title="" alt=""/></figure>
+<div id="main" class="clearfix">
+  <section class="posts">
+    <% if @content[:posts].any? %>
+    <h2>Posts</h2>
+    <section class="posts">
+      <% @content[:posts].each do |post| %>
+      <article class="clearfix">
+        <div class="pull-left">
+          <% if(post.thumbnail) %>
+          <figure><img src="<%= post.thumbnail %>" title="" alt=""/></figure>
+          <% end %>
+        </div>
+        <div class="pull-right">
+          <nav>
+            <% post.categories.each do |category| %>
+            <a href="/category/<%= category['slug'] %>"><%= category['title'] %></a>
+            <% end %>
+          </nav>
+          <header>
+            <h2><%= post.title %></h2>
+            <h3 class="author">
+              <span>
+                <a href="/author/<%= post.author_slug %>">
+                  <%= post.author_nickname %></a> em <a href="#"><%= l(post.date, format: :long) %>
+                </a>
+              </span>
+            </h3>
+          </header>
+          <%= post.content_preview.html_safe %>
+          <a href="/post/<%= post.slug %>" class="keep-reading">Continuar lendo</a>
+        </div>
+      </article>
       <% end %>
-    </div>
-    <div class="pull-right">
-      <nav>
-        <% post.categories.each do |category| %>
-        <a href="/category/<%= category['slug'] %>"><%= category['title'] %></a>
-        <% end %>
-      </nav>
-      <header>
-        <h2><%= post.title %></h2>
-        <h3 class="author">
-          <span>
-            <a href="/author/<%= post.author_slug %>">
-              <%= post.author_nickname %></a> em <a href="#"><%= l(post.date, format: :long) %>
-            </a>
-          </span>
-        </h3>
-      </header>
-      <%= post.content_preview.html_safe %>
-      <a href="/post/<%= post.slug %>" class="keep-reading">Continuar lendo</a>
-    </div>
-  </article>
-  <% end %>
-</section>
-<% else %>
-  <%= render "post_not_found" %>
-<% end %>
+    </section>
+    <% else %>
+      <%= render "post_not_found" %>
+    <% end %>
+    <%= render 'shared/paginator' %>
+  </section>
+</div>
