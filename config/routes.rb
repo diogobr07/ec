@@ -3,6 +3,7 @@ Ec::Application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
   
   root 'site#home'
+  get 'recent' => 'site#recent_posts'
   get 'post/:slug' => 'site#post_by_slug'
   get 'author/:slug' => 'site#posts_by_author'
   get 'category/:slug' => 'site#posts_by_category'
