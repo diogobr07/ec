@@ -32,9 +32,9 @@
       </article>
       <% end %>
     </section>
+    <%= render 'shared/paginator' %>
     <% else %>
       <%= render "post_not_found" %>
     <% end %>
-    <%= render 'shared/paginator' %>
   </section>
 </div>
