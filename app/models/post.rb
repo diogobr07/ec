@@ -49,6 +49,9 @@ class Post < ActiveRecord::Base
     response = JSON.parse(response.body)
     
     if(response['status'] == 'ok')
+      posts[:title] = "Posts de '#{response['author']['nickname']}'" if response['author']
+      posts[:title] = "Posts da categoria '#{response['category']['title']}'" if response['category']
+      posts[:title] = "Posts com a tag '#{response['tag']['title']}'" if response['tag']
       posts[:page] = query[:page]
       posts[:pages] = response['pages']
       response['posts'].each do |p|
